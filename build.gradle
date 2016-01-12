@@ -1,0 +1,37 @@
+apply plugin: 'java'
+apply plugin: 'application'
+
+apply plugin: 'checkstyle'
+
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    springBootVersion = '1.2.6.RELEASE'
+    guavaVersion = '17.0'
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
+
+    compile("com.google.guava:guava:$guavaVersion")
+}
+
+jar {
+    baseName = 'zabajour'
+    version = '0.1.0'
+}
+
+
+checkstyle {
+    toolVersion = 6.7
+    configFile = file('checkstyle.xml')
+}
