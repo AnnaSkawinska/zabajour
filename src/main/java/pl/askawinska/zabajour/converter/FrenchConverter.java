@@ -1,8 +1,11 @@
-package pl.xsolve.zabajour;
+package pl.askawinska.zabajour.converter;
 
 import java.util.Map;
 
-public class FrenchConverter {
+import org.springframework.stereotype.Component;
+
+@Component
+public class FrenchConverter implements Converter {
 
     protected static final Map<String, String> singles =
             new com.google.common.collect.ImmutableMap.Builder<String, String>()
@@ -55,7 +58,8 @@ public class FrenchConverter {
                     .put("ła", "oi")
                     .build();
 
-    public String convert(final String convertMe) {
+    @Override
+	public String convert(final String convertMe) {
 
         StringBuffer meltdown = new StringBuffer(convertMe);
         StringBuffer translation = new StringBuffer(convertMe);
