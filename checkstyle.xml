@@ -4,7 +4,6 @@
         "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
 
 <module name="Checker">
-    <module name="NewlineAtEndOfFile"/>
     <module name="Translation"/>
     <module name="FileLength"/>
     <module name="FileTabCharacter"/>
@@ -62,9 +61,6 @@
         <module name="InnerAssignment">
             <property name="tokens" value="BAND_ASSIGN, BOR_ASSIGN, BSR_ASSIGN, BXOR_ASSIGN,
             DIV_ASSIGN, MINUS_ASSIGN, MOD_ASSIGN, PLUS_ASSIGN, SL_ASSIGN, SR_ASSIGN, STAR_ASSIGN"/>
-        </module>
-        <module name="MagicNumber">
-            <property name="ignoreAnnotation" value="true" />
         </module>
         <module name="MissingSwitchDefault"/>
         <module name="SimplifyBooleanExpression"/>

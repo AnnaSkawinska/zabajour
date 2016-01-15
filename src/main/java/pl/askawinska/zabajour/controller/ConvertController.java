@@ -12,12 +12,14 @@ import pl.askawinska.zabajour.dto.ResponseDto;
 @RestController
 public class ConvertController {
 
-	@Autowired
-	FrenchConverter converter;
+    @Autowired
+    private FrenchConverter converter;
 
-	@RequestMapping("/french/{text}")
-	public @ResponseBody ResponseDto convert(@PathVariable final String text) {
-		return new ResponseDto.Builder().setOriginal(text).setTranslated(converter.convert(text)).build();
-	}
+    @RequestMapping("/french/{text}")
+    @ResponseBody
+    public ResponseDto convert(@PathVariable final String text) {
+        return new ResponseDto.Builder().setOriginal(text).setTranslated(converter.convert(text)).build();
+    }
 
 }
+

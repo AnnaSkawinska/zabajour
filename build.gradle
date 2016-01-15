@@ -1,6 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'checkstyle'
+apply plugin: 'eclipse'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -13,8 +14,9 @@ repositories {
 }
 
 ext {
-    springBootVersion = '1.2.6.RELEASE'
+    springBootVersion = '1.3.1.RELEASE'
     guavaVersion = '17.0'
+    
 }
 
 buildscript {
@@ -37,7 +39,6 @@ jar {
     baseName = 'zabajour'
     version = '0.1.0'
 }
-
 
 checkstyle {
     toolVersion = 6.7
