@@ -93,23 +93,23 @@ public class FrenchConverter implements Converter {
         translation = new StringBuffer(nullSafeConvertee.or(""));
     }
 
-    protected void map(Map<String, String> mapping) {
-        for (String pattern : mapping.keySet()) {
-            int found = alreadyMappedExcluded.indexOf(pattern);
+    protected void map(final Map<String, String> mapping) {
+        for (Map.Entry<String, String> entry : mapping.entrySet()) {
+            int found = alreadyMappedExcluded.indexOf(entry.getKey());
             while (found >= 0) {
-                alreadyMappedExcluded.replace(found, found + pattern.length(),
-                        Strings.repeat(ALREADY_MAPPED_MARKER, mapping.get(pattern).length()));
-                translation.replace(found, found + pattern.length(), mapping.get(pattern));
+                alreadyMappedExcluded.replace(found, found + entry.getKey().length(),
+                        Strings.repeat(ALREADY_MAPPED_MARKER, entry.getValue().length()));
+                translation.replace(found, found + entry.getKey().length(), entry.getValue());
 
-                found = alreadyMappedExcluded.indexOf(pattern);
+                found = alreadyMappedExcluded.indexOf(entry.getKey());
             }
         }
     }
-    
-    protected void mapWholeWord(Map<String, String> mapping) {
+
+    protected void mapWholeWord(final Map<String, String> mapping) {
         String replaceMe = translation.toString();
-        for (String pattern : mapping.keySet()) {
-            replaceMe = replaceMe.replaceAll("\\b(" + pattern + ")\\b", mapping.get(pattern));
+        for (Map.Entry<String, String> entry : mapping.entrySet()) {
+            replaceMe = replaceMe.replaceAll("\\b(" + entry.getKey() + ")\\b", entry.getValue());
         }
         translation = new StringBuffer(replaceMe);
     }

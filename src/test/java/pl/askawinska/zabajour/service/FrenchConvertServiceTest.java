@@ -7,9 +7,9 @@ import pl.askawinska.zabajour.converter.Converter;
 import pl.askawinska.zabajour.converter.FrenchConverter;
 
 public class FrenchConvertServiceTest {
-    
+
     private Converter c = new FrenchConverter();
-    
+
     @Test
     public void zabaTest() {
         Assert.assertEquals("jaroi jaba jour", c.convert("żarła żaba żur"));
