@@ -4,8 +4,13 @@ import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
+import com.google.common.base.Optional;
+import com.google.common.base.Strings;
+
 @Component
 public class FrenchConverter implements Converter {
+
+    protected static final String ALREADY_MAPPED_MARKER = "*";
 
     protected static final Map<String, String> SINGLES = new com.google.common.collect.ImmutableMap.Builder<String, String>()
             //@formatter:off
@@ -60,48 +65,53 @@ public class FrenchConverter implements Converter {
             .build();
             //@formatter:on
 
+    protected static final Map<String, String> WHOLE_WORDS = new com.google.common.collect.ImmutableMap.Builder<String, String>()
+            //@formatter:off
+            .put("o", "eau")
+            .build();
+            //@formatter:on
+
+    protected String convertee;
+    protected StringBuffer alreadyMappedExcluded;
+    protected StringBuffer translation;
+
     @Override
-    public String convert(final String convertMe) {
+    public String convert(final String convertee) {
+        reset(convertee);
 
-        StringBuffer meltdown = new StringBuffer(convertMe);
-        StringBuffer translation = new StringBuffer(convertMe);
-
-        for (String pattern : DIGRAMS.keySet()) {
-            int found = meltdown.indexOf(pattern);
-            while (found >= 0) {
-                meltdown.replace(found, found + pattern.length(), howManyStars(DIGRAMS.get(pattern).length()));
-                translation.replace(found, found + pattern.length(), DIGRAMS.get(pattern));
-
-                found = meltdown.indexOf(pattern);
-            }
-        }
-
-        for (String pattern : SINGLES.keySet()) {
-            int found = meltdown.indexOf(pattern);
-            while (found >= 0) {
-                meltdown.replace(found, found + pattern.length(), howManyStars(SINGLES.get(pattern).length()));
-                translation.replace(found, found + pattern.length(), SINGLES.get(pattern));
-
-                found = meltdown.indexOf(pattern);
-            }
-        }
+        map(DIGRAMS);
+        map(SINGLES);
+        mapWholeWord(WHOLE_WORDS);
 
         return translation.toString();
     }
 
-    private String howManyStars(final int length) {
-        switch (length) {
-        case 1:
-            return "*";
-        case 2:
-            return "**";
-        case 3:
-            return "***";
-        case 4:
-            return "****";
-        default:
-            throw new RuntimeException();
+    protected void reset(final String convertee) {
+        this.convertee = convertee;
+        Optional<String> nullSafeConvertee = Optional.fromNullable(convertee);
+        alreadyMappedExcluded = new StringBuffer(nullSafeConvertee.or(""));
+        translation = new StringBuffer(nullSafeConvertee.or(""));
+    }
+
+    protected void map(Map<String, String> mapping) {
+        for (String pattern : mapping.keySet()) {
+            int found = alreadyMappedExcluded.indexOf(pattern);
+            while (found >= 0) {
+                alreadyMappedExcluded.replace(found, found + pattern.length(),
+                        Strings.repeat(ALREADY_MAPPED_MARKER, mapping.get(pattern).length()));
+                translation.replace(found, found + pattern.length(), mapping.get(pattern));
+
+                found = alreadyMappedExcluded.indexOf(pattern);
+            }
         }
+    }
+    
+    protected void mapWholeWord(Map<String, String> mapping) {
+        String replaceMe = translation.toString();
+        for (String pattern : mapping.keySet()) {
+            replaceMe = replaceMe.replaceAll("\\b(" + pattern + ")\\b", mapping.get(pattern));
+        }
+        translation = new StringBuffer(replaceMe);
     }
 
 }
