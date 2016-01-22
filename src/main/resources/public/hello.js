@@ -5,7 +5,7 @@ postApp.controller('postController', function($scope, $http) {
     $scope.request = {"text" : "żarła żaba żur"};
     $scope.submitForm = function() {
 
-    	$http.get('http://localhost:8080/french/'+$scope.request.text)
+    	$http.get('https://zabajour.herokuapp.com/french/'+$scope.request.text)
     	.success(function(data) {
         if (data.errors) {
           
