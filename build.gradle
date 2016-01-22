@@ -44,3 +44,7 @@ checkstyle {
     toolVersion = 6.7
     configFile = file('checkstyle.xml')
 }
+
+task wrapper(type: Wrapper) {
+   gradleVersion = '2.8'
+}
