@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -jar target/zabajour-0.0.1-SNAPSHOT.jar
+web: java -Dserver.port=$PORT -jar build/libs/zabajour-0.1.0.jar
