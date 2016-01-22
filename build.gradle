@@ -48,3 +48,7 @@ checkstyle {
 task wrapper(type: Wrapper) {
    gradleVersion = '2.8'
 }
+
+task stage {
+  dependsOn build
+}
