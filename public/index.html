@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app>
+<html ng-app="postApp" ng-controller="postController">
 	<head>
 		<title>Hello AngularJS</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
@@ -7,17 +7,12 @@
 	</head>
 
 	<body>
-		<div ng-controller="Hello">
-			<p>"{{response.original}}" is in French:</p>
-			<p>{{response.translated}}</p>
-		</div> 
 		<form name="userForm" ng-submit="submitForm()">
 			<div class="form-group">
-        	
-        <input type="text" name="text" class="form-control" ng-model="request.text">
-        <span ng-show="errorName">{{errorName}}</span>
-    </div>
-    <button type="submit" class="btn btn-primary">Translate</button>
+	       		<input type="text" name="text" class="form-control" ng-model="request.text">
+	        	<span ng-show="errorName">{{errorName}}</span>
+    			<button type="submit" class="btn btn-primary">Frenchify!</button>
+    		</div>
     </form>
     <textarea rows="10" cols="100" ng-model="response.translated" ></textarea>
 	</body>

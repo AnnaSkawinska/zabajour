@@ -1,6 +1,17 @@
-function Hello($scope, $http) {
-    $http.get('http://localhost:8080/french/żarła żaba żur').
-        success(function(data) {
-            $scope.response = data;
-        });
-}
+var postApp = angular.module('postApp', []);
+
+postApp.controller('postController', function($scope, $http) {
+    $scope.response = {};
+    $scope.request = {"text" : "żarła żaba żur"};
+    $scope.submitForm = function() {
+
+    	$http.get('http://localhost:8080/french/'+$scope.request.text)
+    	.success(function(data) {
+        if (data.errors) {
+          
+        } else {
+          $scope.response = data;
+        }
+      });
+    };
+});
