@@ -1,0 +1,75 @@
+body {
+	font-family: Tahoma, Geneva, sans-serif;
+}
+
+h1 {
+	font-size: 20px;
+	color:#800080;
+	text-align: center;
+}
+
+form {
+	background: -webkit-gradient(linear, bottom, left 175px, from(#CCCCCC), to(#EEEEEE));
+	background: -moz-linear-gradient(bottom, #EEEEEE, #FFFFFF 175px);
+	margin:auto;
+	spacing: 10px;
+	position:relative;
+	width:700px;
+	height:250px;
+	font-size: 14px;
+	font-style: italic;
+	line-height: 24px;
+	font-weight: bold;
+	color: #09C;
+	text-decoration: none;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	padding: 20px;
+	border: inset 0px solid #333;
+	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+
+input {
+	width: 525px;
+	border: 1px solid #800080;
+	height: 25px;
+	-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+	margin-right: 1.5em;
+	margin-top: 1.5em;
+	margin-bottom: 2em;    
+}
+
+button {
+	width:100px;
+	background:#800080;
+	color:white;	
+	border: 0px solid #800080;
+	font-family: Tahoma, Geneva, sans-serif;
+	height: 30px;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+	
+button:hover {
+	background:#fff;
+	color:#800080;
+	border: 1px solid #800080;
+}
+
+textarea:focus, input:focus {
+	border: 1px solid #800080;
+}
+
+.copyright {
+	color: #800080;
+	font-size: 10px;
+	text-align: center;
+}

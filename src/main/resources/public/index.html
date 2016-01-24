@@ -2,18 +2,22 @@
 <html ng-app="postApp" ng-controller="postController">
 	<head>
 		<title>Jaroi jaba jour. Don't polish your French. Frenchify your Polish!</title>
+		<link rel="stylesheet" href="styles.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
     	<script src="hello.js"></script>
 	</head>
 
 	<body>
+		<h1>Don't polish your French. Frenchify your Polish!</h1>
 		<form name="userForm" ng-submit="submitForm()">
 			<div class="form-group">
-	       		<input type="text" name="text" class="form-control" ng-model="request.text">
+	       		<input type="text" name="text" ng-model="request.text">
 	        	<span ng-show="errorName">{{errorName}}</span>
-    			<button type="submit" class="btn btn-primary">Frenchify!</button>
+    			<button type="submit">Frenchify!</button>
+			    <textarea rows="10" cols="80" ng-model="response.translated" readonly="true"></textarea>
     		</div>
-    </form>
-    <textarea rows="10" cols="100" ng-model="response.translated" ></textarea>
+    	</form>
+    	<hr/>
+    	<p class="copyright">Created by AnnaSkawińska 2016, for the lulz. Contribute, make it even more nonsense: <a href="https://github.com/AnnaSkawinska/zabajour">Github</a></p>  	
 	</body>
 </html>
